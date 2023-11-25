@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart</title>
-    <style>
+{% extends 'base.html' %}
+
+{% block title %}
+<!--title<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">-->
+
+<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+<link rel="stylesheet" href="/static/css/style.css">
+<title style="color: azure">Shopping Cart</title>
+<style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+<!--            background-color: #f4f4f4;-->
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -22,7 +23,7 @@
             padding: 0;
         }
         li {
-            background-color: #fff;
+<!--            background-color: #fff;-->
             margin-bottom: 10px;
             padding: 10px;
             border-radius: 5px;
@@ -34,7 +35,7 @@
             margin: 20px auto;
             text-align: center;
             padding: 10px;
-            background-color: #4CAF50;
+<!--            background-color: #4CAF50;-->
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -44,19 +45,23 @@
             font-size: 18px;
             margin-top: 20px;
         }
-    </style>
-</head>
-<body>
-    <h1>Shopping Cart</h1>
+</style>
+{% endblock title %}
+
+
+{% block body %}
+<div class="container text-center">
+
+    <h1 style="color: azure">Корзина🛒</h1>
     <ul>
         {% for item in cart_items %}
-            <li>
-                <img src="{{ item.image }}" alt="{{ item.name }}" style="max-width: 100px; height: auto;">
-                {{ item.name }} - Quantity: {{ item.quantity }} - Price: {{ item.price }}₽
+            <li style="color: azure">
+                <img src="{{ item.image }}" style="max-width: 100px; height: auto;">
+                {{ item.name }} - Количество: {{ item.quantity }} - Цена: {{ item.price }}₽
             </li>
         {% endfor %}
     </ul>
-    <p>Total Price: ${{ total_price }}</p>
-    <a href="/create_order">Continue Shopping</a>
-</body>
-</html>
+    <p style="color: azure">Общая цена: {{ total_price }}₽</p>
+    <button class="btn btn-primary" type="submit" onclick="location.href='/create_order'">🍽️Продолжить сбор корзины🍽️</button>
+</div>
+{% endblock body %}

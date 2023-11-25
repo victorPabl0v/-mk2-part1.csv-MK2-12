@@ -52,14 +52,13 @@
         {% for id, product in products.items() %}
             <li>
                 <form action="/add_to_cart" method="post">
-                    <span style="color: azure">{{ product.name }} - ${{ product.price }}</span>
+                    <span style="color: azure">{{ product.name }} - {{ product.price }}₽</span>
                     <input type="hidden" name="product_id" value="{{ id }}">
-                    <button class="btn btn-primary" type="submit">Add to Cart</button>
+                    <button class="btn btn-primary" type="submit">Добавить в корзину</button>
                 </form>
             </li>
         {% endfor %}
     </ul>
-    <a style="color: azure" class="button" href="/addict">View Cart</a>
-    <a style="color: azure" class="button" href="/">Back to Main Menu</a>
+    <button class="btn btn-primary" onclick="location.href='/addict'">Корзина🛒</button>
 </div>
 {% endblock body %}
